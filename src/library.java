@@ -1,4 +1,7 @@
 import java.util.Scanner;
+
+import sun.awt.VerticalBagLayout;
+
 import java.util.ArrayList;
 
 public class library {
@@ -21,7 +24,7 @@ int i = 0;
 		System.out.println("4 to find book");
 		System.out.println("5 to print to all books by type");
 		System.out.println("6 to statistics book");
-		System.out.println("7 to insert book"); 
+		System.out.println("7 to exit"); 
 		
 		Scanner sc = new Scanner(System.in) ;
 		i = sc.nextInt();
@@ -46,11 +49,57 @@ int i = 0;
 	
 	private static void statistics() {
 		// TODO Auto-generated method stub
+		int sumHeBook, sumOtherBook;
+		 sumHeBook = sumOtherBook = 0;
 		
+		
+		for (int i =0; i< totalBook ; i++){
+			if (BooksVec[i].country == 1){
+				sumHeBook++;
+			}
+			else {
+				sumOtherBook++;
+			}
+		}
+		System.out.println("sum all book is: "  + totalBook );
+		System.out.println("sum all book is: " + sumHeBook);
+		System.out.println("sum all book is: " + sumOtherBook);
+		choice();
 	}
 	private static void printBook() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("what do you want print?");
+		System.out.println("if you want to print all book press 1");
+		System.out.println("if you want to print heb book press 2");
+		System.out.println("if you want to print outher book press 3");
+		int index;
+		Scanner sc = new Scanner(System.in);
+		index = sc.nextInt();
+		switch (index) {
+		case 1:
+			for(int i=0 ; i < totalBook ; i++){
+			System.out.println(BooksVec[i].fname + BooksVec[i].lname + BooksVec[i].nameBook );	
+			}
+			break;
+		case 2:
+			for(int i=0 ; i < totalBook ; i++){
+				if (BooksVec[i].country == 1 ){
+				System.out.println(BooksVec[i].fname +" " + BooksVec[i].lname + " "+  BooksVec[i].nameBook );	
+				}
+				}
+			break;
+		case 3:
+			for(int i=0 ; i < totalBook ; i++){
+				if (BooksVec[i].country == 2 ){
+				System.out.println(BooksVec[i].fname +" " + BooksVec[i].lname + " "+  BooksVec[i].nameBook );	
+				}
+				}
+			break;
+
+		default:
+			break;
+		}
+		choice();
 	}
 	private static void findBook() {
 		// TODO Auto-generated method stub
@@ -66,6 +115,7 @@ int i = 0;
 	public static void insertBook() {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
+	
 		System.out.println("pls insert the book name");
 		String nb = sc.next();
 		System.out.println("pls insert the book MKT");
